@@ -1,7 +1,7 @@
 // src/components/Sections/Home/EventCard.jsx
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const EventCard = ({ event }) => {
   return (
@@ -11,8 +11,8 @@ const EventCard = ({ event }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-      whileHover={{ y: -5, boxShadow: '0px 10px 20px rgba(0,0,0,0.3)' }}
+      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      whileHover={{ y: -5, boxShadow: "0px 10px 20px rgba(0,0,0,0.3)" }}
     >
       {/* The image part remains the same */}
       <img
