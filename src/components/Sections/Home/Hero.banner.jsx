@@ -6,7 +6,7 @@ export default function HeroBanner() {
 
       {/* Welcome Text */}
       <h1 className="text-4xl font-bold mb-4">
-        Welcome to the IEEE 2025 Home Page
+        Welcome to the IEEE Home Page
       </h1>
       <p className="text-lg mb-4">
         This is the home page of the IEEE 2025 project.
