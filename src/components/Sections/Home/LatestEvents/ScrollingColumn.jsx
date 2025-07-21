@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import EventCard from "./EventCard"; // Import the EventCard component
+import EventCard from "./LatestEvents/EventCard"; // Import the EventCard component
 
 const ScrollingColumn = ({ events, direction = "up", duration = 60 }) => {
   // We duplicate the events to create the seamless looping effect
