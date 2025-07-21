@@ -8,39 +8,44 @@ import ExpandedView from "./ExpandedView";
 const events = [
   {
     src: "/images/image1.png",
-    title: "Robotics Hackathon",
-    description: "A 24-hour event where teams build and program robots.",
+    title: "Neural Nexus - The Machine Learning Bootcamp",
+    description:
+      "Neural Nexus , an immersive machine learning bootcamp designed to equip participants with practical skills in AI through hands-on projects and expert-led sessions.",
   },
   {
     src: "/images/image2.png",
-    title: "PCB Design Workshop",
-    description: "A hands-on workshop covering the fundamentals of PCB design.",
+    title: "Algoverse - The DSA Bootcamp",
+    description:
+      "AlgoVerse , a comprehensive DSA bootcamp focused on strengthening problem-solving skills and mastering data structures and algorithms through real-world coding challenges.",
   },
   {
     src: "/images/image3.png",
-    title: "AI/ML Seminar",
-    description: "An expert-led seminar on the latest trends in Artificial Intelligence.",
+    title: "Women-Centric Cybersecurity Ideathon",
+    description:
+      "WIE (Women in Engineering) , a women-centric cybersecurity ideathon that empowers female innovators to tackle digital security challenges through creative, tech-driven solutions.",
   },
   {
     src: "/images/image4.png",
-    title: "TechFest Winners",
-    description: "Celebrating the brilliant minds who achieved top honors.",
+    title: "Web Wizards - The Web Development Bootcamp",
+    description:
+      "Web Wizards , an interactive web development bootcamp that guides learners through building responsive, modern websites using HTML, CSS, JavaScript, and popular frameworks.",
   },
   {
     src: "/images/image5.png",
-    title: "Industry Connect",
-    description: "A networking event bridging the gap between students and professionals.",
+    title: "Speaker Session - Saumya Singh",
+    description:
+      "Speaker Session by Saumya Singh offers inspiring insights from a Smart India Hackathon (SIH) winner, sharing her journey, problem-solving strategies, and tips for aspiring innovators.",
   },
 ];
 
 // 1. We define the layout in an array for easier management.
 //    Each item now has responsive classes for medium (md) and large (lg) screens.
 const layout = [
-    { event: events[0], class: "md:col-span-2 lg:col-span-2" }, // Wide on tablet & desktop
-    { event: events[1], class: "" }, // Standard 1x1 on all screens
-    { event: events[2], class: "md:row-span-2 lg:row-span-2" }, // Tall on tablet & desktop
-    { event: events[3], class: "" }, // Standard 1x1 on all screens
-    { event: events[4], class: "md:col-span-2 lg:col-span-2" }, // Wide on tablet & desktop
+  { event: events[0], class: "md:col-span-2 lg:col-span-2" }, // Wide on tablet & desktop
+  { event: events[1], class: "" }, // Standard 1x1 on all screens
+  { event: events[2], class: "md:row-span-2 lg:row-span-2" }, // Tall on tablet & desktop
+  { event: events[3], class: "" }, // Standard 1x1 on all screens
+  { event: events[4], class: "md:col-span-2 lg:col-span-2" }, // Wide on tablet & desktop
 ];
 
 const LatestEvents = () => {
