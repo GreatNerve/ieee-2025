@@ -133,8 +133,9 @@ html {
   }
   100% {
     top: 16px;
-    left: 16px;
-    width: 60px;
+    left: 10px;
+    height: 48px;
+    width: auto;
     transform: none;
   }
 }
