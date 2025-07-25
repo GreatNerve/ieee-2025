@@ -5,6 +5,8 @@ export default function HomePage() {
   return (
     <Fragment>
       <HeroBanner />
+      {/* Add a large spacer for scroll testing */}
+      <div style={{ height: "60vh" }} />
     </Fragment>
   );
 }
