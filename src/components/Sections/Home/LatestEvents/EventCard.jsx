@@ -27,7 +27,7 @@ const EventCard = ({ event, onCardClick }) => {
         layoutId={`card-image-${event.title}`}
         src={event.src}
         alt={event.title}
-        className="w-full h-full object-cover"
+        className="h-full w-full rounded-lg"
       />
 
       {/* This is the gradient overlay that appears on hover */}
