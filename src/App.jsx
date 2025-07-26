@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { PublicRoutes } from "./routes/public.routes.jsx";
 
 function App() {
