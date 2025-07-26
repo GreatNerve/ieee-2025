@@ -102,7 +102,7 @@ export const ChaptersSection = () => {
       background: "black",
       title: "",
       description:
-        "The IEEE Power & Energy Society, formerly the IEEE Power Engineering Society, is the oldest society of the IEEE focused on the scientific and engineering knowledge about electric power and energy.",
+        "The IEEE Power & Energy Society is oldest society of IEEE focused on the scientific and engineering knowledge about electric power and energy.",
     },
     {
       id: 2,
