@@ -10,31 +10,31 @@ const events = [
     src: "/images/image1.png",
     title: "Neural Nexus - The Machine Learning Bootcamp",
     description:
-      "Neural Nexus , an immersive machine learning bootcamp designed to equip participants with practical skills in AI through hands-on projects and expert-led sessions.",
-  },
-  {
-    src: "/images/image3.png",
-    title: "Speaker Session - Saumya Singh",
-    description:
-      "Speaker Session by Saumya Singh offers inspiring insights from a Smart India Hackathon (SIH) winner, sharing her journey, problem-solving strategies, and tips for aspiring innovators.",
+      "Neural Nexus, a hands-on machine learning bootcamp equipping participants with AI skills through expert-led projects and sessions.",
   },
   {
     src: "/images/image2.png",
-    title: "Algoverse - The DSA Bootcamp ",
+    title: "Algoverse - The DSA Bootcamp Speaker Session -",
     description:
-      "AlgoVerse , a comprehensive DSA bootcamp focused on strengthening problem-solving skills and mastering data structures and algorithms through real-world coding challenges.",
+      "AlgoVerse, a DSA bootcamp that builds problem-solving skills through real-world coding challenges and algorithm mastery.",
+  },
+  {
+    src: "/images/image3_new.png",
+    title: "Saumya Singh",
+    description:
+      "Inspiring insights from SIH winner Saumya Singh as she shares her journey, problem-solving strategies, and tips for innovators",
   },
   {
     src: "/images/image4.png",
     title: "Women-Centric Cybersecurity Ideathon",
     description:
-      "WIE (Women in Engineering) , a women-centric cybersecurity ideathon that empowers female innovators to tackle digital security challenges through creative, tech-driven solutions.",
+      "WIE Cybersprint, a women-centric cybersecurity ideathon empowering female innovators to solve digital security challenges with tech-driven solutions",
   },
   {
     src: "/images/image5.png",
     title: "Web Wizards - The Web Development Bootcamp",
     description:
-      "Web Wizards , an interactive web development bootcamp that guides learners through building responsive, modern websites using HTML, CSS, JavaScript, and popular frameworks.",
+      "Web Wizards, a hands-on web dev bootcamp where learners build responsive sites using HTML, CSS, JavaScript, and modern frameworks.",
   },
 ];
 
@@ -68,10 +68,12 @@ const LatestEvents = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            Latest Events
+            Igniting Innovation: <br />
+            Spotlight on IEEE NSUT Events
           </h2>
           <p className="text-lg text-gray-400">
-            A glimpse into our most recent activities and successes.
+            Discover transformative experiences that blend technology,
+            creativity, and community to shape future-ready leaders.
           </p>
         </div>
 
