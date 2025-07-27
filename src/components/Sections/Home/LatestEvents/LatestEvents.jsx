@@ -50,8 +50,8 @@ const layout = [
   {
     event: events[2],
     class:
-      "md:row-span-2 lg:row-span-2 flex items-center justify-center rounded-lg",
-  }, // Tall on tablet & desktop
+      "hidden md:flex md:row-span-2 lg:row-span-2 items-center justify-center rounded-lg",   // Tall on tablet & desktop
+  }, 
   { event: events[3], class: "flex items-center justify-center rounded-lg" }, // Standard 1x1 on all screens
   {
     event: events[4],
