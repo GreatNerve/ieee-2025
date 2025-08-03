@@ -3,6 +3,7 @@ import FAQ from "@/components/Sections/Home/FAQ";
 import PastEvents from "@/components/Sections/Home/PastEvents";
 import AluminiSection from "@/components/Sections/Home/AluminiSection";
 import { Fragment } from "react";
+import WhyChooseUs from "@/components/Sections/Home/WhyIEEE/WhyChoose";
 import FacultyTestimonials from "@/components/Sections/Home/FacultyTestimonials";
 
 export default function HomePage() {
@@ -10,6 +11,7 @@ export default function HomePage() {
     <Fragment>
       <HeroBanner />
       <PastEvents />
+      <WhyChooseUs />
       <FacultyTestimonials />
       <FAQ />
     </Fragment>
