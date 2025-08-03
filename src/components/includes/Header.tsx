@@ -43,7 +43,7 @@ export default function Header() {
         className={cn(
           "fixed top-0 left-0 right-0 w-full",
           "backdrop-blur-[2px]",
-          "flex justify-between items-center px-4 md:px-8 py-4 bg-gradient-to-r from-black via-[#2c3e50] to-[#3aadfb] border-b border-white/10 z-50 select-none",
+          "flex justify-between items-center px-4 md:px-8 py-4 bg-gradient-to-r from-black via-[#2c3e50] to-[#3aadfb] border-b border-white/10 z-[100] select-none",
           "overflow-x-hidden"
         )}
         style={{
@@ -150,7 +150,7 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/20 z-50 flex justify-end items-start md:hidden"
+            className="fixed inset-0 bg-black/20 z-[100] flex justify-end items-start md:hidden"
             initial="closed"
             animate="open"
             exit="closed"
