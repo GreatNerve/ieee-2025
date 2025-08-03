@@ -1,14 +1,20 @@
 "use client";
+
+import { useInterval } from "@/hooks/useInterval";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { useInterval } from "@/hooks/useInterval";
 import { TextRise } from "../custom/TextRise";
-import { Heading, Paragraph, Subheading } from "../includes/TypoGraphy";
+import { Heading, Paragraph } from "../includes/TypoGraphy";
 
-// --- Data ---
-const events = [
+interface Event {
+  img: string;
+  title: string;
+  desc: string;
+}
+
+const events: Event[] = [
   {
     img: "/tensymp.png",
     title: "Tensymp'24",
@@ -31,7 +37,6 @@ const events = [
   },
 ];
 
-// --- Stack Config ---
 const CARD_WIDTH = 390;
 const CARD_HEIGHT = 390;
 const STACK_DEPTH = 3;
@@ -41,43 +46,29 @@ const stackConfig = [
   { scale: 0.88, y: 60, x: -48, rotate: -17, opacity: 0.4, z: 10 },
 ];
 
-// --- Helpers ---
-function getStackCards(events: typeof events, active: number) {
-  // Returns [top, 2nd, 3rd] event indices, wrapping around
-  const res = [];
-  for (let i = 0; i < STACK_DEPTH; ++i) {
-    res.push((active + i) % events.length);
-  }
-  return res;
+function getStackCards(activeIndex: number) {
+  return Array.from({ length: STACK_DEPTH }, (_, i) => (activeIndex + i) % events.length);
 }
 
-// --- Main Component ---
 export default function PastEvents() {
   const [active, setActive] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [animating, setAnimating] = useState(false);
 
-  // Auto-advance
   useInterval(() => {
-    if (!dragging && !animating) handleChange(1);
+    if (!dragging && !animating) navigate(1);
   }, 4300);
 
-  function handleChange(dir: 1 | -1) {
+  function navigate(direction: 1 | -1) {
     if (animating) return;
     setAnimating(true);
     setTimeout(() => {
-      setActive((prev) => {
-        let next = prev + dir;
-        if (next < 0) next += events.length;
-        if (next >= events.length) next -= events.length;
-        return next;
-      });
+      setActive((prev) => (prev + direction + events.length) % events.length);
       setAnimating(false);
-    }, 600); // match exit animation duration with that in AnimatePresence
+    }, 600);
   }
 
-  // Cards in stack: [top, second, third]
-  const stackOrder = getStackCards(events, active);
+  const stackOrder = getStackCards(active);
 
   return (
     <section className="flex flex-col lg:flex-row w-full min-h-[90vh] text-white bg-black relative overflow-hidden px-4 lg:px-0 pt-12 md:pt-20 pb-4">
@@ -90,7 +81,6 @@ export default function PastEvents() {
             duration={1}
           />
         </Heading>
-
         <Paragraph>
           A Showcase of Innovation, Learning, and Collaboration. With a strong
           focus on excellence and innovation, IEEE NSUT&apos;s events provide
@@ -106,108 +96,62 @@ export default function PastEvents() {
             "w-full h-full flex items-center justify-center relative min-h-[460px] select-none",
             dragging && "cursor-grabbing"
           )}
+          style={{ willChange: 'transform, opacity' }}
         >
           <div className="relative w-[420px] h-[420px] max-w-full mx-auto">
-            {/* Stack cards (second and third) */}
-            {stackOrder.slice(1).map((evIdx, i) => (
+            {/* Back stack layers */}
+            {stackOrder.slice(1).map((idx, i) => (
               <motion.div
-                key={evIdx + "-stack"}
-                className="absolute left-0 top-0 w-full h-full pointer-events-none select-none"
-                style={{ zIndex: stackConfig[i + 1].z }}
-                initial={false}
-                animate={{
-                  scale: stackConfig[i + 1].scale,
-                  y: stackConfig[i + 1].y,
-                  x: stackConfig[i + 1].x,
-                  rotate: stackConfig[i + 1].rotate,
-                  opacity: stackConfig[i + 1].opacity,
-                }}
-                transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                key={`stack-${idx}`}
+                className="absolute inset-0 pointer-events-none"
+                animate={stackConfig[i + 1]}
+                transition={{ type: 'tween', duration: 0.8, ease: 'easeInOut' }}
+                style={{ zIndex: stackConfig[i + 1].z, willChange: 'transform, opacity' }}
               >
-                <motion.div className="relative w-full h-full bg-black/80 border-2 border-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+                <div className="relative w-full h-full bg-black/80 border-2 border-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
                   <div className="h-2/5 w-full flex items-center justify-center p-4 bg-black/70">
                     <Image
-                      src={events[evIdx].img}
-                      alt={events[evIdx].title}
+                      src={events[idx].img}
+                      alt={events[idx].title}
                       width={CARD_WIDTH}
                       height={CARD_HEIGHT / 3.2}
                       className="object-contain h-full max-h-32 w-auto mx-auto"
                       draggable={false}
-                      priority={false}
                     />
                   </div>
                   <div className="flex-1 flex flex-col px-6 pt-4 pb-6">
-                    <Heading className="text-lg mdtext-xl lg:text-2xl">
-                      <TextRise
-                        text={events[evIdx].title}
-                        delay={0.4}
-                        perWord
-                        duration={1}
-                      />
+                    <Heading className="text-lg md:text-xl lg:text-2xl">
+                      <TextRise text={events[idx].title} delay={0.4} perWord duration={1} />
                     </Heading>
-                    <Paragraph>{events[evIdx].desc}</Paragraph>
+                    <Paragraph>{events[idx].desc}</Paragraph>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             ))}
 
-            {/* Top card: animate up and fade out, second card animates up to top */}
+            {/* Active card */}
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={active}
-                className="absolute left-0 top-0 w-full h-full pointer-events-auto"
-                initial={{
-                  scale: stackConfig[1].scale,
-                  y: stackConfig[1].y,
-                  x: stackConfig[1].x,
-                  rotate: stackConfig[1].rotate,
-                  opacity: stackConfig[1].opacity,
-                  zIndex: 50,
-                }}
-                animate={{
-                  scale: stackConfig[0].scale,
-                  y: stackConfig[0].y,
-                  x: stackConfig[0].x,
-                  rotate: [0, 2.2, -2.2, 0],
-                  opacity: stackConfig[0].opacity,
-                  zIndex: 50,
-                  transition: {
-                    scale: { type: "spring", stiffness: 120, damping: 18 },
-                    y: { type: "spring", stiffness: 120, damping: 18 },
-                    x: { type: "spring", stiffness: 120, damping: 18 },
-                    rotate: {
-                      type: "tween",
-                      duration: 2.4,
-                      repeat: Infinity,
-                      repeatType: "loop",
-                      ease: "easeInOut",
-                    },
-                    opacity: { duration: 0.3 },
-                  },
-                }}
-                exit={{
-                  scale: 1.08,
-                  y: -120,
-                  x: 0,
-                  rotate: 0,
-                  opacity: 0,
-                  zIndex: 50,
-                  transition: { duration: 0.58, ease: "easeInOut" },
-                }}
+                className="absolute inset-0"
+                initial={stackConfig[1]}
+                animate={stackConfig[0]}
+                exit={{ ...stackConfig[0], opacity: 0, y: -120, transition: { duration: 0.5, ease: 'easeInOut' } }}
+                transition={{ type: 'spring', stiffness: 60, damping: 12 }}
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.34}
+                dragElastic={0.2}
                 onDragStart={() => setDragging(true)}
                 onDragEnd={(_, info) => {
                   setDragging(false);
-                  if (info.offset.x < -90) handleChange(1);
-                  else if (info.offset.x > 90) handleChange(-1);
+                  if (info.offset.x < -80) navigate(1);
+                  else if (info.offset.x > 80) navigate(-1);
                 }}
-                whileTap={{ scale: 1.025 }}
-                whileHover={{ scale: 1.018 }}
+                whileTap={{ scale: 1.02 }}
+                style={{ zIndex: 50, willChange: 'transform, opacity' }}
               >
-                <motion.div className="relative w-full h-full bg-black/80 border-2 border-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-                  <div className="h-2/5 w-full flex items-center justify-center p-4 bg-black/70">
+                <div className="relative w-full h-full bg-black/90 border-2 border-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+                  <div className="h-2/5 w-full flex items-center justify-center p-4 bg-black/80">
                     <Image
                       src={events[active].img}
                       alt={events[active].title}
@@ -215,40 +159,35 @@ export default function PastEvents() {
                       height={CARD_HEIGHT / 3.2}
                       className="object-contain h-full max-h-32 w-auto mx-auto"
                       draggable={false}
-                      priority={true}
+                      priority
                     />
                   </div>
-                  <div className="flex-1 flex flex-col px-6 pt-4 pb-6">
-                    <Heading>
-                      <TextRise
-                        text={events[active].title}
-                        delay={0.4}
-                        perWord
-                        duration={1}
-                      />
+                  <div className="flex-1 flex flex-col px-6 pt-2 pb-4">
+                    <Heading className="text-lg md:text-xl lg:text-2xl">
+                      <TextRise text={events[active].title} delay={0.4} perWord duration={1} />
                     </Heading>
-                    <Paragraph>{events[active].desc}</Paragraph>
+                    <Paragraph className="text-sm md:text-base">
+                      {events[active].desc}
+                    </Paragraph>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
-          {/* Dots */}
+
+          {/* Dots navigation */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-50 pointer-events-auto">
-            {events.map((event, idx) => (
+            {events.map((_, idx) => (
               <button
-                key={event.title}
+                key={idx}
                 className={cn(
                   "w-3 h-3 rounded-full border border-white transition-all",
                   idx === active
                     ? "bg-blue-400 scale-110 shadow-lg"
                     : "bg-white/30 opacity-60"
                 )}
-                aria-label={`Show event ${event.title}`}
-                onClick={() => {
-                  if (idx === active) return;
-                  setActive(idx);
-                }}
+                aria-label={`Show event ${idx + 1}`}
+                onClick={() => idx !== active && setActive(idx)}
               />
             ))}
           </div>

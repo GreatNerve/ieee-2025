@@ -81,7 +81,7 @@ export default function HeroBanner() {
   }, []);
 
   const isMobile = useIsMobile();
-  const aspectRatio = isMobile ? 5 / 4 : 21 / 6;
+  const aspectRatio = isMobile ? 5 / 4 : 21 / 8;
 
   const maxX = isMobile ? 10 : 36;
   const maxY = isMobile ? 6 : 28;
