@@ -4,9 +4,11 @@ import { cn } from "@/lib/utils";
 import { motion, useInView, Variants } from "framer-motion";
 import {
   Computer,
+  Globe,
   Heart,
   Lightbulb,
   Network,
+  Rocket,
   Star,
   Trophy,
 } from "lucide-react";
@@ -20,49 +22,121 @@ const BACKGROUND_ANIM = {
 };
 
 const FEATURE_COLORS = [
-  { bg: "bg-blue-950", border: "border-blue-900", iconBg: "bg-blue-950", title: "text-blue-200", desc: "text-blue-300" },
-  { bg: "bg-blue-900", border: "border-blue-800", iconBg: "bg-blue-900", title: "text-cyan-100", desc: "text-cyan-200" },
-  { bg: "bg-blue-800", border: "border-blue-700", iconBg: "bg-blue-800", title: "text-sky-100", desc: "text-sky-200" },
-  { bg: "bg-blue-600", border: "border-sky-600", iconBg: "bg-blue-600", title: "text-sky-50", desc: "text-sky-100" },
-  { bg: "bg-blue-400", border: "border-cyan-400", iconBg: "bg-blue-400", title: "text-cyan-950", desc: "text-cyan-800" },
-  { bg: "bg-cyan-200", border: "border-cyan-300", iconBg: "bg-cyan-200", title: "text-blue-900", desc: "text-blue-800" },
+  {
+    bg: "bg-blue-950",
+    border: "border-blue-900",
+    iconBg: "bg-blue-950",
+    title: "text-blue-200",
+    desc: "text-blue-300",
+  },
+  {
+    bg: "bg-blue-900",
+    border: "border-blue-800",
+    iconBg: "bg-blue-900",
+    title: "text-cyan-100",
+    desc: "text-cyan-200",
+  },
+  {
+    bg: "bg-blue-800",
+    border: "border-blue-700",
+    iconBg: "bg-blue-800",
+    title: "text-sky-100",
+    desc: "text-sky-200",
+  },
+  {
+    bg: "bg-blue-600",
+    border: "border-sky-600",
+    iconBg: "bg-blue-600",
+    title: "text-sky-50",
+    desc: "text-sky-100",
+  },
+  {
+    bg: "bg-blue-400",
+    border: "border-cyan-400",
+    iconBg: "bg-blue-400",
+    title: "text-cyan-950",
+    desc: "text-cyan-800",
+  },
+  {
+    bg: "bg-cyan-200",
+    border: "border-cyan-300",
+    iconBg: "bg-cyan-200",
+    title: "text-blue-900",
+    desc: "text-blue-800",
+  },
 ];
 
 const features = [
-  { icon: Computer, title: "Supercharge Your Skills Like a Tech Pro", description: "Get exclusive access to immersive workshops, hands-on projects, and technical talks that turn you from student to standout—master everything from coding to cutting-edge tech frameworks." },
-  { icon: Trophy, title: "Experience That Makes Recruiters Notice You", description: "Lead events, organize conferences, and compete in national contests. Your resume will shine with real-world achievements and leadership experience." },
-  { icon: Network, title: "Build a Network That Opens Doors Worldwide", description: "Connect with 400,000+ global engineers, industry leaders, and innovators. IEEE is your fast pass to mentorship, internships, and career-changing connections." },
-  { icon: Lightbulb, title: "Stay Ahead of the Curve", description: "Dive into IEEE's digital library and stay updated on the latest tech trends, research, and innovations before anyone else." },
-  { icon: Heart, title: "Make Friends for Life", description: "Join a vibrant, passionate community where collaboration and fun are standard. Build friendships and professional relationships that last way beyond your college years." },
-  { icon: Star, title: "Shape the Future with Impact", description: "Be a part of groundbreaking initiatives and outreach programs that make a difference on campus and in the world. Your ideas and involvement can create real change." },
+  {
+    icon: Globe ,
+    title: "Global Recognition",
+    description:
+      "Join a network of over 400,000 professionals in 160+ countries. At IEEE NSUT, be part of a community renowned for its contributions to cutting-edge technology and innovation.",
+  },
+  {
+    icon: Rocket,
+    title: "Professional Edge",
+    description:
+      "Access internships, certifications, conferences, and research opportunities. IEEE NSUT helps bridge classroom learning with real-world impact, building a profile that stands out.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation-Driven Culture",
+    description:
+      "Immerse yourself in an environment where ideas thrive. With technical workshops, hands-on projects, and expert sessions, every member is encouraged to explore, experiment, and evolve.",
+  },
+  {
+    icon: Heart,
+    title: "Friends and Connections for Life",
+    description:
+      "Join a vibrant, supportive community where collaboration and lasting friendships go hand in hand with learning. At IEEE NSUT, you gain more than skills—you build relationships that last far beyond college.",
+  },
 ];
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 80, scale: 0.9, rotateX: 15 },
-  visible: { opacity: 1, y: 0, scale: 1, rotateX: 0, transition: { duration: 1.2, type: "spring", stiffness: 80, damping: 20, bounce: 0.4 } },
+  hidden: { opacity: 0, y: 32 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+      delay: i * 0.18,
+    },
+  }),
 };
 
 const textShakeVariants: Variants = {
   initial: { x: 0 },
-  shake: { x: [0, -12, 12, -9, 9, -4, 4, 0], transition: { duration: 0.7, ease: "easeInOut" } },
+  shake: {
+    x: [],
+    transition: { duration: 0.7, ease: "easeInOut" },
+  },
 };
+
 const iconWobbleVariants: Variants = {
-  initial: { rotate: 0, x: 0, y: 0 },
+  initial: { rotate: 0 },
   wobble: {
-    rotate: [0, 1.5, -3, 2.5, -2, 1, -1.5, 0],
-    x: [0, -2, 2, -1.5, 1.5, -1, 0.5, 0],
-    y: [0, -2, 3, -2, 2, -1.5, 1, 0],
+    rotate: [],
+    x: [],
+    y: [],
     transition: {
       repeat: Infinity,
       duration: 2.8,
-      ease: "easeInOut"
-    }
-  }
+      ease: "easeInOut",
+    },
+  },
 };
 
-const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: number }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isCardInView = useInView(cardRef, { once: true, amount: 0.2, margin: "0px 0px -50px 0px" });
+const FeatureCard = ({
+  feature,
+  index,
+  parentInView,
+}: {
+  feature: (typeof features)[0];
+  index: number;
+  parentInView: boolean;
+}) => {
   const [isHovering, setIsHovering] = useState(false);
   const IconComponent = feature.icon;
   const row = Math.floor(index / 2);
@@ -70,14 +144,13 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
 
   return (
     <motion.div
-      ref={cardRef}
+      custom={index}
       initial="hidden"
-      animate={isCardInView ? "visible" : "hidden"}
+      animate={parentInView ? "visible" : "hidden"}
       variants={cardVariants}
-      style={{ perspective: 1000, willChange: 'transform, opacity' }}
       className={cn(
         "rounded-3xl border-4 shadow-2xl px-7 py-7 sm:px-12 sm:py-9",
-        "cursor-pointer transition-all duration-500",
+        "transition-all duration-500",
         "w-full flex items-center gap-7 sm:gap-9",
         "backdrop-blur-sm bg-opacity-90",
         color.bg,
@@ -90,11 +163,9 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
         initial="initial"
         animate="wobble"
         variants={iconWobbleVariants}
-        style={{ willChange: 'transform' }}
         className={cn(
           "flex-shrink-0 w-14 h-14 sm:w-24 sm:h-24 rounded-2xl",
-          "flex items-center justify-center",
-          "shadow-lg",
+          "flex items-center justify-center shadow-lg",
           color.iconBg
         )}
       >
@@ -106,12 +177,8 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
         initial="initial"
         animate={isHovering ? "shake" : "initial"}
         variants={textShakeVariants}
-        style={{ willChange: 'transform' }}
       >
-        <motion.h3
-          initial={{ opacity: 0, x: -30, y: 10 }}
-          animate={isCardInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -30, y: 10 }}
-          transition={{ delay: 0.4, duration: 0.8, type: "spring", stiffness: 100 }}
+        <h3
           className={cn(
             "text-lg sm:text-2xl font-bold mb-2 sm:mb-3",
             "drop-shadow-sm",
@@ -119,15 +186,10 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
           )}
         >
           {feature.title}
-        </motion.h3>
-        <motion.p
-          initial={{ opacity: 0, x: -30, y: 10 }}
-          animate={isCardInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -30, y: 10 }}
-          transition={{ delay: 0.6, duration: 0.8, type: "spring", stiffness: 100 }}
-          className={cn("text-xs sm:text-lg leading-relaxed", color.desc)}
-        >
+        </h3>
+        <p className={cn("text-xs sm:text-lg leading-relaxed", color.desc)}>
           {feature.description}
-        </motion.p>
+        </p>
       </motion.div>
     </motion.div>
   );
@@ -135,6 +197,8 @@ const FeatureCard = ({ feature, index }: { feature: typeof features[0]; index: n
 
 const WhyChooseUs = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isSectionInView = useInView(sectionRef, { once: true, amount: 0.18 });
+
   return (
     <section
       ref={sectionRef}
@@ -145,14 +209,17 @@ const WhyChooseUs = () => {
           {...BACKGROUND_ANIM}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -left-1/4 -top-1/4 h-96 w-96 rounded-full bg-gradient-to-br from-blue-600/30 to-transparent blur-3xl"
-          style={{ willChange: 'transform, opacity' }}
         />
         <motion.div
           initial={BACKGROUND_ANIM.initial}
           animate={BACKGROUND_ANIM.animate}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
           className="absolute -right-1/4 -bottom-1/4 h-96 w-96 rounded-full bg-gradient-to-br from-cyan-400/30 to-transparent blur-3xl"
-          style={{ willChange: 'transform, opacity' }}
         />
       </div>
 
@@ -163,12 +230,16 @@ const WhyChooseUs = () => {
 
         <motion.div
           className="w-full grid grid-cols-1 sm:grid-cols-2 gap-8 relative min-h-[440px]"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
+          initial="hidden"
+          animate={isSectionInView ? "visible" : "hidden"}
         >
           {features.map((feature, index) => (
-            <FeatureCard key={feature.title} feature={feature} index={index} />
+            <FeatureCard
+              key={feature.title}
+              feature={feature}
+              index={index}
+              parentInView={isSectionInView}
+            />
           ))}
         </motion.div>
       </div>
