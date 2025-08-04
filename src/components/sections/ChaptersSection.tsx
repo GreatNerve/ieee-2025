@@ -70,7 +70,7 @@ const stats = [
   { value: 1, suffix: "", label: "STUDENT BRANCH" },
 ];
 
-export function ChaptersSection() {
+export default function ChaptersSection() {
   const isMobile = useIsMobile();
   const [api, setApi] = React.useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = React.useState(0);

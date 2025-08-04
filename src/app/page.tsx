@@ -1,4 +1,6 @@
-import { ChaptersSection } from "@/components/sections/ChaptersSection";
+import { BlueBgWrapper } from "@/components/includes/BlueBgWraper";
+import AlumniSection from "@/components/sections/AlumniSection";
+import ChaptersSection from "@/components/sections/ChaptersSection";
 import FAQASection from "@/components/sections/FAQASection";
 import HeroBanner from "@/components/sections/HeroBanner";
 import LatestEventsSection from "@/components/sections/LatestEventsSection";
@@ -12,8 +14,11 @@ export default function Home() {
       <PastEvents />
       <WhyChooseUs />
       <ChaptersSection />
-      <LatestEventsSection/>
+      <LatestEventsSection />
+      <BlueBgWrapper>
+      <AlumniSection />
       <FAQASection />
+      </BlueBgWrapper>
     </div>
   );
 }
