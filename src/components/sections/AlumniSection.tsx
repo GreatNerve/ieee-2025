@@ -20,6 +20,8 @@ import Autoplay from "embla-carousel-autoplay";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ScrollArea } from "../ui/scroll-area";
+import { Heading, Paragraph } from "../includes/TypoGraphy";
+import { TextRise } from "../custom/TextRise";
 
 const alumniTestimonials = [
   {
@@ -95,24 +97,22 @@ export default function AlumniSection() {
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );
 
-
-
   return (
     <section className="">
-      <div className="w-11/12 max-w-7xl mx-auto">
+      <div className="w-11/12 max-w-7xl mx-auto mb-12 mt-4">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#00a8cc] to-[#0082ca] bg-clip-text text-transparent mb-2 tracking-tight">
-            Alumni Reflections
-          </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+          <Heading className="">
+            <TextRise text="Alumni Reflections" />
+          </Heading>
+          <Paragraph className="text-lg text-white/90 max-w-2xl mx-auto">
             Celebrating the journeys and voices of our distinguished IEEE NSUT
             alumni
-          </p>
+          </Paragraph>
         </motion.div>
         <Carousel
           className="w-full"

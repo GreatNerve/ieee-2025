@@ -17,8 +17,8 @@ export default function Home() {
       <LatestEventsSection />
       <BlueBgWrapper>
       <AlumniSection />
-      <FAQASection />
       </BlueBgWrapper>
+      <FAQASection />
     </div>
   );
 }
