@@ -23,50 +23,43 @@ import { motion, Variants } from "framer-motion";
 const activities = [
   {
     id: 1,
+    title: "Power & Energy Society (PES)",
+    description:
+      "Formerly the Power Engineering Society, PES of IEEE is empowering students to lead the future of smart, sustainable energy systems.",
     logoUrl:
       "https://pessyp.ieee.org/wp-content/uploads/sites/37/2024/09/image-4-1024x647.png",
-    title: "IEEE Power & Energy Society",
-    description:
-      "The IEEE Power & Energy Society is the oldest society of the IEEE focused on the scientific and engineering knowledge about electric power and energy.",
   },
   {
     id: 2,
-    logoUrl:
-      "https://wie.ieeer10.org/wp-content/uploads/2016/10/ieeer10_wie_logo_retina.png",
-    title: "IEEE Women in Engineering",
+    title: "Circuits & Systems Chapter",
     description:
-      "The Women in Engineering Affinity Group of IEEE promotes gender diversity and supports professional development for women in engineering and technology fields.",
+      "Circuits and Systems Chapter is innovating the building blocks of technology through advanced circuit and system design.",
+    logoUrl:
+      "https://vcip2025.itec.aau.at/wp-content/uploads/2025/06/assets_task_01jx2tkbb3f4evyyg832rqdhtw_1749220517_img_0-e1749221232467-768x273.webp",
   },
   {
     id: 3,
-    logoUrl:
-      "https://www.ieeecsvit.com/static/darklogo-0604a0fe26f4c4783ef9e27819e9bb25.png",
-    title: "IEEE Computer Society Chapter",
+    title: "Robotics & Automation Chapter (RAS)",
     description:
-      "The IEEE Computer Society Chapter is a subgroup of IEEE dedicated to advancing computing technology and fostering knowledge exchange among professionals and students in the field.",
+      "RAS chapter of IEEE is fueling the future with intelligent machines and real-world robotics innovation.",
+    logoUrl:
+      "https://www.ieee-ras.org/images/ras-resources/IEEE_RAS_logo_4C_stacked-HiRes.fw.png",
   },
   {
     id: 4,
-    logoUrl:
-      "https://www.ieee-ras.org/images/ras-resources/IEEE_RAS_logo_4C_stacked-HiRes.fw.png",
-    title: "IEEE Robotics and Automation Chapter",
+    title: "Computer Society Chapter",
     description:
-      "The Robotics and Automation Chapter of IEEE focuses on advancing research, development, and application of robotics and automation technologies.",
+      "The IEEE Computer Society Chapter is driving the next wave of computing through collaboration, code, and creativity.",
+    logoUrl:
+      "https://www.ieeecsvit.com/static/darklogo-0604a0fe26f4c4783ef9e27819e9bb25.png",
   },
   {
     id: 5,
+    title: "WIE Affinity Group",
+    description:
+      "WIE of IEEE is championing gender equity in STEM by empowering women to lead and innovate.",
     logoUrl:
-      "https://vcip2025.itec.aau.at/wp-content/uploads/2025/06/assets_task_01jx2tkbb3f4evyyg832rqdhtw_1749220517_img_0-e1749221232467-768x273.webp",
-    title: "IEEE Circuits and Systems Chapter",
-    description:
-      "The Circuits and Systems Chapter of IEEE specializes in advancing the theory, design, and implementation of circuits and systems for various applications in electronics and technology.",
-  },
-  {
-    id: 6,
-    logoUrl: "https://ias.ieeesbcek.org/images/iaswhite.png",
-    title: "IEEE Industry Applications Society",
-    description:
-      "IEEE IAS advances the practical use of electrical and electronic engineering in industry by connecting academia and professionals through innovation and collaboration.",
+      "https://wie.ieeer10.org/wp-content/uploads/2016/10/ieeer10_wie_logo_retina.png",
   },
 ];
 
@@ -103,13 +96,12 @@ export function ChaptersSection() {
     });
   }, [api]);
 
-  
-  const logoWobble : Variants = {
+  const logoWobble: Variants = {
     initial: { rotate: 0, x: 0, y: 0 },
     animate: {
-      rotate: [0, 4, -5, 4, -4, 2, -1, 0],
-      x: [0, 4, -4, 3, -4, 3, 0],
-      y: [0, -4, 5, -5, 4, -2, 0],
+      rotate: [],
+      x: [],
+      y: [],
       transition: {
         repeat: Infinity,
         duration: 3.6,
@@ -125,7 +117,9 @@ export function ChaptersSection() {
           <TextRise text="Chapters and Affinity Groups" perWord delay={0.2} />
         </Heading>
         <Paragraph>
-          Chapters and affinity groups are the pivotal segments of the IEEE architecture, meticulously designed to provide tailored opportunities, foster innovation, and cultivate professional growth among students.
+          Chapters and affinity groups are the pivotal segments of the IEEE
+          architecture, meticulously designed to provide tailored opportunities,
+          foster innovation, and cultivate professional growth among students.
         </Paragraph>
       </div>
       <div className="w-full max-w-4xl relative flex items-center justify-center">
@@ -183,7 +177,11 @@ export function ChaptersSection() {
                     </AspectRatio>
                     <div className="mt-8 w-full text-center">
                       <p className="text-lg md:text-xl text-neutral-200 font-medium max-w-2xl mx-auto">
-                        <TextRise text={activity.description} perWord duration={0.5} />
+                        <TextRise
+                          text={activity.description}
+                          perWord
+                          duration={0.5}
+                        />
                       </p>
                     </div>
                   </div>

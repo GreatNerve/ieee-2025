@@ -11,86 +11,55 @@ const events = [
     title: "Web Wizards - The Web Development Bootcamp",
     description:
       "Web Wizards, a hands-on web dev bootcamp where learners build responsive sites using HTML, CSS, JavaScript, and modern frameworks.",
-    className:
-      "md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-4 aspect-square",
+    className: "md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-4 aspect-square",
   },
   {
     src: "/images/image2.png",
     title: "Algoverse - The DSA Bootcamp Speaker Session",
     description:
       "AlgoVerse, a DSA bootcamp that builds problem-solving skills through real-world coding challenges and algorithm mastery.",
-    className:
-      "md:col-start-3 md:col-end-5 md:row-start-1 md:row-end-4 aspect-square",
+    className: "md:col-start-3 md:col-end-5 md:row-start-1 md:row-end-4 aspect-square",
   },
   {
     src: "/images/image3_new.png",
     title: "Saumya Singh",
     description:
       "Inspiring insights from SIH winner Saumya Singh as she shares her journey, problem-solving strategies, and tips for innovators",
-    className:
-      "md:col-start-5 md:col-end-7 md:row-start-1 md:row-end-7 aspect-[2/4]",
+    className: "md:col-start-5 md:col-end-7 md:row-start-1 md:row-end-7 aspect-[2/4]",
   },
   {
     src: "/images/image4.png",
     title: "Women-Centric Cybersecurity Ideathon",
     description:
       "WIE Cybersprint, a women-centric cybersecurity ideathon empowering female innovators to solve digital security challenges with tech-driven solutions",
-    className:
-      "md:col-start-1 md:col-end-3 md:row-start-4 md:row-end-7 aspect-square",
+    className: "md:col-start-1 md:col-end-3 md:row-start-4 md:row-end-7 aspect-square",
   },
   {
     src: "/images/image1.png",
     title: "Neural Nexus - The Machine Learning Bootcamp",
     description:
       "Neural Nexus, a hands-on machine learning bootcamp equipping participants with AI skills through expert-led projects and sessions.",
-    className:
-      "md:col-start-3 md:col-end-5 md:row-start-4 md:row-end-7 aspect-square",
+    className: "md:col-start-3 md:col-end-5 md:row-start-4 md:row-end-7 aspect-square",
   },
 ];
 
 const cardVariants: Variants = {
-  initial: {
-    opacity: 0,
-    y: 60,
-    scale: 0.92,
-  },
+  initial: { opacity: 0, y: 60, scale: 0.95 },
   animate: (i: number) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.35,
-      delay: 0.08 + i * 0.09,
-      type: "spring",
-      bounce: 0.18,
+      duration: 0.6,
+      delay: 0.1 + i * 0.1,
+      ease: "easeOut",
     },
   }),
-  idle: {
-    rotate: [0, 4, -5, 4, -4, 2, -1, 0],
-    x: [0, 4, -4, 3, -4, 3, 0],
-    y: [0, -4, 5, -5, 4, -2, 0],
-    scale: 1,
-    transition: {
-      repeat: Infinity,
-      duration: 3.6,
-      ease: "easeInOut",
-    },
-  },
   hover: {
-    rotate: [0, -10, 10, -8, 8, -6, 6, 0],
-    x: [0, -10, 10, -7, 7, -5, 5, 0],
-    y: [0, 0, 0, 0, 0, 0, 0, 0],
-    scale: 1.09,
-    transition: {
-      rotate: { duration: 0.42, ease: "easeInOut" },
-      x: { duration: 0.42, ease: "easeInOut" },
-      scale: { type: "spring", stiffness: 350, damping: 13 },
-    },
+    scale: 1.06,
+    transition: { duration: 0.3, ease: "easeInOut" },
   },
-  rest: {
-    rotate: 0,
-    y: 0,
-    x: 0,
+  idle: {
     scale: 1,
     transition: { duration: 0.3 },
   },
@@ -117,26 +86,19 @@ export default function LatestEventsSection() {
             creativity, and community to shape future-ready leaders.
           </p>
         </div>
-        <div
-          className={`
-            grid grid-cols-1 
-            md:grid-cols-6 
-            md:grid-rows-6
-            gap-6
-          `}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-6 md:grid-rows-6 gap-6">
           {events.map((event, idx) => (
             <motion.div
               key={event.title}
               className={cn(
-                "group relative overflow-hidden rounded-2xl border border-blue-800/60 bg-[#181c2f] shadow-lg transition-all duration-300 flex",
+                "group relative overflow-hidden rounded-2xl border border-blue-800/60 bg-[#181c2f] shadow-lg flex",
                 event.className
               )}
               custom={idx}
               variants={cardVariants}
               initial="initial"
               whileInView="animate"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
               animate={hovered === idx ? "hover" : "idle"}
               onMouseEnter={() => setHovered(idx)}
               onMouseLeave={() => setHovered(null)}
@@ -159,19 +121,18 @@ export default function LatestEventsSection() {
                   className="object-cover object-center transition-all duration-300"
                   style={{
                     filter:
-                      hovered === idx ? "brightness(0.55)" : "brightness(0.93)",
+                      hovered === idx ? "brightness(0.5)" : "brightness(0.9)",
                     transition: "filter 0.3s",
                   }}
                   priority={idx === 0}
                 />
                 <motion.div
                   className="absolute inset-0 flex flex-col justify-center items-center text-center px-5 py-7 z-10"
-                  initial={false}
                   animate={{
                     opacity: hovered === idx ? 1 : 0,
                     y: hovered === idx ? 0 : 20,
                   }}
-                  transition={{ duration: 0.22, ease: "easeInOut" }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
                   style={{
                     pointerEvents: "none",
                     background:

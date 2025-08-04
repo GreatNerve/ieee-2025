@@ -39,19 +39,20 @@ const faqs = [
 ];
 
 const wobbleInitial = {
-  rotate: [0, 1.3, -1.4, 1.2, -1.6, 1.1, -1.4, 0],
-  x: [0, -2.1, 2.4, -1.3, 1.5, -1.2, 0.7, 0],
-  y: [0, -2.2, 3.4, -2.2, 2.6, -1.5, 1.7, 0],
+  rotate: [],
+  x: [],
+  y: [],
 };
+
 const wobbleAnimate = {
-  x: [0, -7, 7, -5, 5, -2, 2, 0],
+  rotate: [],
+  x: [],
+  y: [],
 };
 
 const wobbleTransitionInitial = {
   duration: 2,
-  repeat: Infinity,
-
-  times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
+  times: [],
 };
 
 const wobbleTransition = {
@@ -61,6 +62,7 @@ const wobbleTransition = {
 
 export default function FAQASection() {
   const [openIdx, setOpenIdx] = React.useState<number | null>(null);
+  const [hoverIdx, setHoverIdx] = React.useState<number | null>(null);
 
   return (
     <section className="py-16 px-6 max-w-3xl mx-auto flex flex-col items-center justify-center w-full">
@@ -90,19 +92,21 @@ export default function FAQASection() {
           >
             <motion.div
               animate={
-                openIdx === null || openIdx === undefined
-                  ? wobbleAnimate
-                    ? wobbleInitial
-                    : {}
+                hoverIdx === idx
+                  ? { rotate: 0, x: 0, y: 0 }
+                  : openIdx === null || openIdx === undefined
+                  ? wobbleInitial
                   : wobbleAnimate
-                  ? {}
-                  : {}
               }
               transition={
-                openIdx === null || openIdx === undefined
+                false
+                  ? { duration: 0.2 }
+                  : openIdx === null || openIdx === undefined
                   ? wobbleTransitionInitial
                   : wobbleTransition
               }
+              onMouseEnter={() => setHoverIdx(idx)}
+              onMouseLeave={() => setHoverIdx(null)}
             >
               <AccordionItem
                 value={`faq-${idx}`}
