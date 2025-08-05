@@ -16,13 +16,13 @@ const linksArr = [
   {
     title: "Contact us",
     links: [
-      <a
-        key="phone"
-        href="tel:+919534781286"
-        className="hover:text-[#00a8cc] transition"
-      >
-        +91 88264 90096
-      </a>,
+      // <a
+      //   key="phone"
+      //   href="tel:+919534781286"
+      //   className="hover:text-[#00a8cc] transition"
+      // >
+      //   +91 88264 90096
+      // </a>,
       <a
         key="mail"
         href="mailto:ieeensut@gmail.com"
