@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -16,14 +15,14 @@ const executiveCouncil = [
     imageUrl: "/team/sakshi.jpg",
     linkedinUrl: "https://www.linkedin.com/in/sakshi-sahu-ss",
   },
- 
+
   {
     name: "Aditya Mishra",
     role: "Chairperson",
     imageUrl: "/team/aditya_mishra.jpg",
     linkedinUrl: "https://www.linkedin.com/in/aditya-mishra-bb44ab2b9",
   },
-   {
+  {
     name: "Diya Joshi",
     role: "Vice Chairperson",
     imageUrl: "/team/diya.jpg",
@@ -288,7 +287,8 @@ const societies = [
         name: "Vaibhav Kumar Rajput",
         role: "Chairperson",
         imageUrl: "/team/vaibhav.jpeg",
-        linkedinUrl: "https://www.linkedin.com/in/vaibhav-rajput06?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        linkedinUrl:
+          "https://www.linkedin.com/in/vaibhav-rajput06?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       },
       {
         name: "Aditi Sharma",
@@ -413,7 +413,10 @@ const SectionDivider = ({
 
 const CoreSection = () => {
   return (
-    <section className="bg-black text-white min-h-screen font-sans" id="core-section">
+    <section
+      className="bg-black text-white min-h-screen font-sans"
+      id="core-section"
+    >
       <div className="container mx-auto px-4 sm:px-6 py-16">
         <motion.div
           className="text-center mb-20 px-4"
@@ -425,55 +428,88 @@ const CoreSection = () => {
             Meet the Core Team
           </h1>
           <p className="text-lg w-[75vw] m-auto sm:text-xl text-gray-300 font-medium">
-            Our core section is a group of dedicated individuals who work tirelessly to make the organization a success.
+            Our core section is a group of dedicated individuals who work
+            tirelessly to make the organization a success.
           </p>
         </motion.div>
 
         <SectionDivider title="Executive Council" />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 justify-items-center px-4">
-          {executiveCouncil.map((person, index) => (
-            <motion.div
-              key={person.name}
-              className={`flex flex-col items-center hover:scale-105 ease-in-out transition ${
-                person.role === "Chairperson"
-                  ? "order-first lg:order-none"
-                  : ""
-              }`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-            >
-              <div
-                className={`relative overflow-hidden hover:ring-4 hover:ring-cyan-400 rounded-xl shadow-2xl flex items-center justify-center ${
-                  person.role === "Chairperson"
-                    ? "w-52 h-52 sm:w-60 sm:h-60 lg:w-64 lg:h-64"
-                    : "w-36 h-36 sm:w-44 sm:h-44 lg:w-48 lg:h-48"
-                }`}
-                style={{ position: "relative" }}
-              >
-                <a
-                  href={person.linkedinUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+        <div className="mt-12 flex flex-col lg:flex-wrap justify-center lg:gap-8">
+          <div className="flex items-center justify-center order-0 lg:translate-y-0">
+            {executiveCouncil
+              .filter((person) => person.role === "Chairperson")
+              .map((person, index) => (
+                <motion.div
+                  key={person.name}
+                  className="flex flex-col items-center scale-[0.95] hover:scale-100 transition ease-in-out"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
-                  <Image
-                    src={person.imageUrl}
-                    alt={`Portrait of ${person.name}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 220px"
-                    className="object-cover rounded-xl"
-                  />
-                </a>
-              </div>
-              <div className="mt-3 text-center">
-                <h3 className="text-xl pb-1 font-semibold text-white">
-                  {person.name}
-                </h3>
-                <p className="text-sm text-cyan-300">{person.role}</p>
-              </div>
-            </motion.div>
-          ))}
+                  <div className="relative overflow-hidden hover:ring-4 hover:ring-cyan-400 rounded-xl shadow-2xl flex items-center justify-center size-48 aspect-square sm:w-54 lg:size-60 mx-12">
+                    <a
+                      href={person.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={person.imageUrl}
+                        alt={`Portrait of ${person.name}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 220px"
+                        className="object-cover rounded-xl"
+                        priority
+                      />
+                    </a>
+                  </div>
+                  <div className="mt-3 text-center">
+                    <h3 className="text-xl pb-1 font-semibold text-white">
+                      {person.name}
+                    </h3>
+                    <p className="text-sm text-cyan-300">{person.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 mt-10 lg:mt-0 lg:flex-row lg:items-start lg:gap-8 lg:ml-4">
+            {executiveCouncil
+              .filter((person) => person.role !== "Chairperson")
+              .map((person, index) => (
+                <motion.div
+                  key={person.name}
+                  className="flex flex-col items-center scale-100 hover:scale-105 transition ease-in-out"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <div className="relative overflow-hidden hover:ring-4 hover:ring-cyan-400 rounded-xl shadow-2xl flex items-center justify-center  w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56">
+                    <a
+                      href={person.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={person.imageUrl}
+                        alt={`Portrait of ${person.name}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 220px"
+                        className="object-cover rounded-xl aspect-square w-40 h-40"
+                        priority
+                      />
+                    </a>
+                  </div>
+                  <div className="mt-3 text-center">
+                    <h3 className="text-xl pb-1 font-semibold text-white">
+                      {person.name}
+                    </h3>
+                    <p className="text-sm text-cyan-300">{person.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+          </div>
         </div>
 
         <SectionDivider title={generalSecretaries.title} />
