@@ -8,9 +8,12 @@ import {
   FaGlobe,
   FaBookOpen,
   FaCalendarAlt,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+export const whatsAppLink = "https://wa.me/919534781286?text=Hello%20IEEE%20NSUT";
 
 const linksArr = [
   {
@@ -98,6 +101,16 @@ export default function Footer() {
                   The Largest and the Oldest Technical Society of NSUT
                 </p>
                 <div className="flex flex-row items-center gap-4 mt-3 md:mt-4">
+                  <a
+                    href={whatsAppLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="hover:text-[#00a8cc] transition"
+                  >
+                    <FaWhatsapp size={24} />
+                  </a>
+
                   <a
                     href="https://www.instagram.com/ieee_nsut"
                     target="_blank"

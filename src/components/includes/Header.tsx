@@ -8,7 +8,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
-const joinNowLink = "https://chat.whatsapp.com/E1MfsiHEDGl7cgwumScIHA";
+
+
+const joinNowLink = "https://docs.google.com/forms/d/e/1FAIpQLScqFjGM-Wm7sQPCdjc7n4SRokKWRUHzYh_7rubpiMV5m-W_ig/viewform";
 
 const tabs = [
   { label: "Home", target: "home", href: "/" },
