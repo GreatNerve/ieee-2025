@@ -13,7 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export const whatsAppLink = "https://wa.me/919534781286?text=Hello%20IEEE%20NSUT";
+export const whatsAppLink = "https://chat.whatsapp.com/E1MfsiHEDGl7cgwumScIHA";
 
 const linksArr = [
   {
