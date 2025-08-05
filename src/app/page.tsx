@@ -7,6 +7,7 @@ import HeroBanner from "@/components/sections/HeroBanner";
 import LatestEventsSection from "@/components/sections/LatestEventsSection";
 import PastEvents from "@/components/sections/PastEventCard";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import WordsOfWisdom from "@/components/sections/WordsOfWisdom";
 
 export default async function Page() {
   return (
@@ -18,6 +19,7 @@ export default async function Page() {
         <ChaptersSection />
         <LatestEventsSection />
         <BlueBgWrapper>
+          <WordsOfWisdom />
           <AlumniSection />
         </BlueBgWrapper>
         <FAQASection />

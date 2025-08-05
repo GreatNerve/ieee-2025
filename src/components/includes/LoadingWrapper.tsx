@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface LoadingWrapperProps {
   children: React.ReactNode;
@@ -18,6 +18,7 @@ export default function LoadingWrapper({
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
+      window.scrollTo(0, 0);
     }, duration);
 
     return () => clearTimeout(timeout);
@@ -41,7 +42,11 @@ export default function LoadingWrapper({
                 initial={{ y: 0, scale: 1 }}
                 animate={{ y: -120 }}
                 exit={{ y: -120 }}
-                transition={{ duration: 2, ease: "easeInOut" }}
+                transition={{
+                  layout: { duration: 0.8, ease: "easeInOut" },
+                  duration: 2,
+                  ease: "easeInOut",
+                }}
                 className="absolute top-1/2 left-1/2 z-20 transform -translate-x-1/2 -translate-y-1/2"
               >
                 <Image
@@ -74,14 +79,7 @@ export default function LoadingWrapper({
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div
-        className={`transition-opacity duration-700 ${
-          isLoading ? "pointer-events-none opacity-0" : "opacity-100"
-        }`}
-      >
-        {children}
-      </div>
+      {!isLoading ? children : null}
     </>
   );
 }

@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 
+const joinNowLink = "https://chat.whatsapp.com/E1MfsiHEDGl7cgwumScIHA";
+
 const tabs = [
   { label: "Home", target: "home", href: "/" },
   { label: "Events", target: "events", href: "/" },
@@ -58,7 +60,10 @@ export default function Header() {
           filter: "contrast(110%) brightness(105%)",
         }}
       >
-        <motion.div className="flex flex-col items-start z-10 shrink-0" layoutId="logo">
+        <motion.div
+          className="flex flex-col items-start z-10 shrink-0"
+          layoutId="logo"
+        >
           <Image
             src="/logo.png"
             alt="IEEE Logo"
@@ -69,7 +74,7 @@ export default function Header() {
           />
         </motion.div>
         {/* Desktop nav */}
-        <div className="ml-1 md:ml-20 flex-1 hidden md:flex justify-center z-10">
+        <div className="ml-1 md:ml-20 flex-1 hidden lg:flex justify-center z-10">
           <ul className="flex list-none gap-3 md:gap-6 flex-wrap items-center">
             {tabs.map(
               (tab, idx) =>
@@ -170,11 +175,13 @@ export default function Header() {
               fontFamily: "Roboto, sans-serif",
             }}
           >
-            Join Now
+            <a href={joinNowLink} target="_blank" rel="noopener noreferrer">
+              Join Now
+            </a>
           </Button>
           <div
             className={cn(
-              "md:hidden me-4 flex flex-col gap-1.5 cursor-pointer p-2 border border-[#3aadfb] rounded-lg bg-[#3aadfb] shadow",
+              "lg:hidden me-4 flex flex-col gap-1.5 cursor-pointer p-2 border border-[#3aadfb] rounded-lg bg-[#3aadfb] shadow",
               "hover:bg-cyan-100/20 hover:scale-105 transition-all",
               menuOpen ? "open" : ""
             )}
@@ -206,7 +213,7 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/20 z-[100] flex justify-end items-start md:hidden"
+            className="fixed inset-0 bg-black/20 z-[100] flex justify-end items-start lg:hidden"
             initial="closed"
             animate="open"
             exit="closed"
@@ -234,43 +241,83 @@ export default function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 + idx * 0.1 }}
                       >
-                        <ScrollLink
-                          to={tab.target}
-                          spy={true}
-                          smooth={true}
-                          offset={-85}
-                          duration={500}
-                          className={cn(
-                            "group relative inline-block cursor-pointer text-white text-base py-1 transition-colors duration-200",
-                            "hover:text-[#00ffff] focus:text-[#00ffff]",
-                            activeSection === tab.target
-                              ? "text-[#00ffff] font-bold"
-                              : ""
-                          )}
-                          tabIndex={0}
-                          onClick={() => setMenuOpen(false)}
-                        >
-                          <span className="relative z-10">{tab.label}</span>
-                          <span
-                            aria-hidden
+                        {tab.href.startsWith("/") ? (
+                          <Link
+                            href={tab.href}
                             className={cn(
-                              "pointer-events-none absolute left-0 -bottom-1 h-[2px] w-full scale-x-0",
-                              "group-hover:scale-x-100 group-focus:scale-x-100 origin-left transition-transform duration-300",
-                              activeSection === tab.target ? "scale-x-100" : ""
+                              "group relative inline-block cursor-pointer text-white text-base py-1 transition-colors duration-200",
+                              "hover:text-[#00ffff] focus:text-[#00ffff]",
+                              activeSection === tab.target
+                                ? "text-[#00ffff] font-bold"
+                                : ""
                             )}
-                            style={{
-                              background: "#00ffff",
-                              boxShadow: "0 0 6px #00ffff99",
-                              borderRadius: "999px",
-                            }}
-                          ></span>
-                          <style jsx>{`
-                            .group:hover,
-                            .group:focus {
-                              text-shadow: 0 0 8px #00ffffaa;
-                            }
-                          `}</style>
-                        </ScrollLink>
+                            tabIndex={0}
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            <span className="relative z-10">{tab.label}</span>
+                            <span
+                              aria-hidden
+                              className={cn(
+                                "pointer-events-none absolute left-0 -bottom-1 h-[2px] w-full scale-x-0",
+                                "group-hover:scale-x-100 group-focus:scale-x-100 origin-left transition-transform duration-300",
+                                activeSection === tab.target
+                                  ? "scale-x-100"
+                                  : ""
+                              )}
+                              style={{
+                                background: "#00ffff",
+                                boxShadow: "0 0 6px #00ffff99",
+                                borderRadius: "999px",
+                              }}
+                            ></span>
+                            <style jsx>{`
+                              .group:hover,
+                              .group:focus {
+                                text-shadow: 0 0 8px #00ffffaa;
+                              }
+                            `}</style>
+                          </Link>
+                        ) : (
+                          <ScrollLink
+                            to={tab.target}
+                            spy={true}
+                            smooth={true}
+                            offset={-85}
+                            duration={500}
+                            className={cn(
+                              "group relative inline-block cursor-pointer text-white text-base py-1 transition-colors duration-200",
+                              "hover:text-[#00ffff] focus:text-[#00ffff]",
+                              activeSection === tab.target
+                                ? "text-[#00ffff] font-bold"
+                                : ""
+                            )}
+                            tabIndex={0}
+                            onClick={() => setMenuOpen(false)}
+                          >
+                            <span className="relative z-10">{tab.label}</span>
+                            <span
+                              aria-hidden
+                              className={cn(
+                                "pointer-events-none absolute left-0 -bottom-1 h-[2px] w-full scale-x-0",
+                                "group-hover:scale-x-100 group-focus:scale-x-100 origin-left transition-transform duration-300",
+                                activeSection === tab.target
+                                  ? "scale-x-100"
+                                  : ""
+                              )}
+                              style={{
+                                background: "#00ffff",
+                                boxShadow: "0 0 6px #00ffff99",
+                                borderRadius: "999px",
+                              }}
+                            ></span>
+                            <style jsx>{`
+                              .group:hover,
+                              .group:focus {
+                                text-shadow: 0 0 8px #00ffffaa;
+                              }
+                            `}</style>
+                          </ScrollLink>
+                        )}
                       </motion.li>
                     )
                 )}
@@ -290,8 +337,15 @@ export default function Header() {
                       fontFamily: "Roboto, sans-serif",
                     }}
                     onClick={() => setMenuOpen(false)}
+                    asChild
                   >
-                    Join Now
+                    <a
+                      href={joinNowLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Join Now
+                    </a>
                   </Button>
                 </motion.li>
               </ul>

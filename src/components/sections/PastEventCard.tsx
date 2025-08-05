@@ -16,22 +16,22 @@ interface Event {
 
 const events: Event[] = [
   {
-    img: "/tensymp.png",
+    img: "/images/tensymp.png",
     title: "Tensymp'24",
     desc: "IEEE TENSYMP'24, is a premier symposium showcasing cutting-edge technological advancements, fostering global collaboration, and empowering researchers, professionals, and students through insightful sessions, workshops, and networking opportunities across diverse domains.",
   },
   {
-    img: "/dssywlc.png",
+    img: "/images/dssywlc.png",
     title: "DSSYWLC'24",
     desc: "IEEE DSSYWLC is a dynamic event focused on networking, knowledge-sharing, and community building through technical symposiums, discussions and cultural festivities.",
   },
   {
-    img: "/algoverse.png",
+    img: "/images/image2.png",
     title: "Algoverse 3.0",
     desc: "IEEE NSUT AlgoVerse is a vibrant, community-driven initiative that provides an engaging and structured platform to thoroughly master DSA through consistent, daily problem-solving challenges like Problem of the Day (POTD), fostering both collaboration and growth.",
   },
   {
-    img: "/pedal.png",
+    img: "/images/pedal.png",
     title: "Pedal Playground",
     desc: "Pedal Playground, organized by IEEE NSUT in collaboration with Crescendo, is an interactive workshop exploring the art of sound design and audio synthesis through pedals. Dive into creative experimentation, music tech.",
   },
