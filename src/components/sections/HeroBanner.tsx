@@ -19,7 +19,7 @@ export default function HeroBanner() {
 
   return (
     <section
-      className="relative w-full py-5 md:py-7 lg:py-8 flex flex-col items-center justify-start overflow-visible font-sans bg-black min-h-[60vh] mt-[56px] md:mt-[100px] lg:mt-[120px]"
+      className="relative w-full px-4 py-5 md:py-7 lg:py-8 flex flex-col items-center justify-start overflow-visible font-sans bg-black min-h-[60vh] mt-[56px] md:mt-[100px] lg:mt-[120px]"
       style={{ fontFamily: "'Poppins', sans-serif" }}
       id="home"
     >

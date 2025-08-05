@@ -129,7 +129,7 @@ export default function AlumniSection() {
             {alumniTestimonials.map((item, idx) => (
               <CarouselItem
                 key={idx}
-                className="md:basis-1/2 lg:basis-1/3 px-3"
+                className="md:basis-1/2 lg:basis-1/3"
               >
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -140,7 +140,7 @@ export default function AlumniSection() {
                     delay: 0.08 * idx,
                     ease: "easeOut",
                   }}
-                  className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl h-full flex flex-col p-6 border border-white/15 scale-[0.97] hover:scale-[1] hover:shadow-2xl transition-transform"
+                  className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl h-full w-full flex flex-col p-6 border border-white/15 scale-[0.97] hover:scale-[1] hover:shadow-2xl transition-transform"
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <Avatar className="w-16 h-16 border-2 border-[#00a8cc] shadow-lg">
@@ -176,7 +176,7 @@ export default function AlumniSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex items-center justify-between mt-5 px-4">
+          <div className="flex items-center justify-between mt-5 max-md:hidden">
             <CarouselPrevious
               className="rounded-full border border-[#00a8cc] bg-gradient-to-r from-[#006ba6] to-[#003865] text-white hover:from-[#003865] hover:to-[#00a8cc] shadow-lg"
               aria-label="Previous"
@@ -194,7 +194,7 @@ export default function AlumniSection() {
         onOpenChange={(open) => setOpenIdx(open ? openIdx : null)}
       >
         {openIdx !== null && (
-          <DialogContent className="max-w-lg md:max-w-2xl lg:max-w-3xl rounded-2xl border-0 p-0 bg-gradient-to-br from-[#002147] via-[#003865] to-[#006ba6] text-white shadow-2xl backdrop-blur-2xl">
+          <DialogContent className="w-11/12 max-w-lg md:max-w-2xl lg:max-w-3xl rounded-2xl border-0 p-0 bg-gradient-to-br from-[#002147] via-[#003865] to-[#006ba6] text-white shadow-2xl backdrop-blur-2xl">
             <DialogHeader className="p-0">
               <DialogTitle className="flex items-center gap-4 px-6 pt-6">
                 <Avatar className="w-16 h-16 border-2 border-[#00a8cc] shadow-lg">
