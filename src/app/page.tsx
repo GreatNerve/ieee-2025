@@ -12,7 +12,7 @@ import WordsOfWisdom from "@/components/sections/WordsOfWisdom";
 export default async function Page() {
   return (
     <LoadingWrapper>
-      <div className="flex flex-col items-center justify-center min-h-screen w-screen overflow-hidden bg-black ">
+      <div className="flex flex-col items-center justify-center min-h-screen mx-auto overflow-hidden bg-black ">
         <HeroBanner />
         <PastEvents />
         <WhyChooseUs />

@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
-
 const joinNowLink = "https://chat.whatsapp.com/E1MfsiHEDGl7cgwumScIHA";
 
 const tabs = [
@@ -45,7 +45,10 @@ export default function Header() {
 
   const sectionIds = tabs.map((tab) => tab.target);
   const activeSection = useActiveSection(sectionIds, 85);
-
+  console.log("Active Section:", activeSection);
+  const pathname = usePathname();
+  console.log("Current Pathname:", pathname);
+  const isHomePage = pathname === "/";
   return (
     <>
       <nav
@@ -85,9 +88,9 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1 + idx * 0.2, duration: 0.6 }}
                     >
-                      {tab.href.startsWith("/") ? (
+                      {tab.target === "team" || !isHomePage ? (
                         <Link
-                          href={tab.href}
+                          href={`${tab.href}`}
                           className={cn(
                             "group relative inline-block cursor-pointer text-[rgb(207,206,206)] text-[19px] px-2 py-1 transition-colors duration-200",
                             "hover:text-[#00c8ff] focus:text-[#00ffff]",
@@ -128,7 +131,7 @@ export default function Header() {
                           className={cn(
                             "group relative inline-block cursor-pointer text-[rgb(207,206,206)] text-[19px] px-2 py-1 transition-colors duration-200",
                             "hover:text-[#00c8ff] focus:text-[#00ffff]",
-                            activeSection === tab.href
+                            activeSection === tab.target
                               ? "text-[#00ffff] font-bold"
                               : ""
                           )}
@@ -140,7 +143,7 @@ export default function Header() {
                             className={cn(
                               "pointer-events-none absolute left-0 -bottom-[3px] h-[2px] w-full scale-x-0",
                               "group-hover:scale-x-100 group-focus:scale-x-100 origin-left transition-transform duration-300",
-                              activeSection === tab.href ? "scale-x-100" : ""
+                              activeSection === tab.target ? "scale-x-100" : ""
                             )}
                             style={{
                               background: "#00ffff",
