@@ -1,18 +1,18 @@
 "use client";
 
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-    type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
@@ -22,6 +22,7 @@ import { TextRise } from "../custom/TextRise";
 import { Heading, Paragraph } from "../includes/TypoGraphy";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ScrollArea } from "../ui/scroll-area";
+import { cn } from "@/lib/utils";
 
 const alumniTestimonials = [
   {
@@ -92,10 +93,19 @@ function needsReadMore(text: string) {
 export default function AlumniSection() {
   const [openIdx, setOpenIdx] = React.useState<number | null>(null);
   const [api, setApi] = React.useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );
+
+  React.useEffect(() => {
+    if (!api) return;
+    setSelectedIndex(api.selectedScrollSnap());
+    api.on("select", () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
     <section className="">
@@ -127,10 +137,7 @@ export default function AlumniSection() {
         >
           <CarouselContent>
             {alumniTestimonials.map((item, idx) => (
-              <CarouselItem
-                key={idx}
-                className="md:basis-1/2 lg:basis-1/3"
-              >
+              <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3">
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -176,15 +183,34 @@ export default function AlumniSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex items-center justify-between mt-5 max-md:hidden">
-            <CarouselPrevious
-              className="rounded-full border border-[#00a8cc] bg-gradient-to-r from-[#006ba6] to-[#003865] text-white hover:from-[#003865] hover:to-[#00a8cc] shadow-lg"
-              aria-label="Previous"
-            />
-            <CarouselNext
-              className="rounded-full border border-[#00a8cc] bg-gradient-to-r from-[#006ba6] to-[#003865] text-white hover:from-[#003865] hover:to-[#00a8cc] shadow-lg"
-              aria-label="Next"
-            />
+          <div className="flex items-center justify-center gap-2 mt-6 sm:mt-8 md:mt-12">
+            <div className={cn("flex items-center space-x-2 z-30 relative")}>
+              <CarouselPrevious className="" />
+              {alumniTestimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  aria-label={`Go to slide ${idx + 1}`}
+                  onClick={() => api?.scrollTo(idx)}
+                  className={cn(
+                    "relative flex items-center justify-center w-4 h-4"
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "block rounded-full transition-all duration-500",
+                      selectedIndex === idx
+                        ? "w-4 h-4 bg-primary shadow-lg ring-2 ring-primary/60"
+                        : "w-2 h-2 bg-neutral-400 opacity-50"
+                    )}
+                  />
+                  {selectedIndex === idx && (
+                    <span className="absolute w-8 h-8 rounded-full border-2 border-primary/40 animate-ping" />
+                  )}
+                </button>
+              ))}
+              <CarouselNext className="" />
+            </div>
           </div>
         </Carousel>
       </div>
