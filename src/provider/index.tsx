@@ -2,6 +2,7 @@
 
 import { ThemeProvider } from "./theme-provider";
 import { ReactNode } from "react";
+import { LayoutGroup } from "framer-motion";
 
 interface ProvidersProps {
   children: ReactNode;
@@ -14,7 +15,7 @@ export function Providers({ children }: ProvidersProps) {
       defaultTheme="dark"
       forcedTheme="dark"
     >
-      {children}
+      <LayoutGroup>{children}</LayoutGroup>
     </ThemeProvider>
   );
 }
