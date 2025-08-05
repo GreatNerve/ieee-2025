@@ -11,7 +11,8 @@ const events = [
     title: "Web Wizards - The Web Development Bootcamp",
     description:
       "Web Wizards, a hands-on web dev bootcamp where learners build responsive sites using HTML, CSS, JavaScript, and modern frameworks.",
-    className: "md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-4 aspect-square",
+    className: "md:col-start-3 md:col-end-5 md:row-start-4 md:row-end-7 aspect-square",
+
   },
   {
     src: "/images/image2.png",
@@ -35,11 +36,12 @@ const events = [
     className: "md:col-start-1 md:col-end-3 md:row-start-4 md:row-end-7 aspect-square",
   },
   {
-    src: "/images/image1.png",
+    src: "/images/image1.jpg",
     title: "Neural Nexus - The Machine Learning Bootcamp",
     description:
       "Neural Nexus, a hands-on machine learning bootcamp equipping participants with AI skills through expert-led projects and sessions.",
-    className: "md:col-start-3 md:col-end-5 md:row-start-4 md:row-end-7 aspect-square",
+          className: "md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-4 aspect-square",
+
   },
 ];
 

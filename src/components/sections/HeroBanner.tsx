@@ -21,6 +21,7 @@ export default function HeroBanner() {
     <section
       className="relative w-full py-5 md:py-7 lg:py-8 flex flex-col items-center justify-start overflow-visible font-sans bg-black min-h-[60vh] mt-[56px] md:mt-[100px] lg:mt-[120px]"
       style={{ fontFamily: "'Poppins', sans-serif" }}
+      id="home"
     >
       <div className="absolute inset-0 w-full h-full -z-10 overflow-hidden">
         <motion.div
@@ -50,6 +51,7 @@ export default function HeroBanner() {
       </div>
       <div className="w-full max-w-[900px] mx-auto px-2 sm:px-4 md:px-8 lg:px-10 text-center">
         <div className="bg-black/75 rounded-xl shadow-xl py-4 px-2 sm:px-5 md:px-10 flex flex-col items-center gap-2">
+        <a href="https://www.ieee.org" target="_blank" rel="noopener noreferrer">
           <Image
             src="/IEEE_logo.svg"
             alt="IEEE Logo"
@@ -58,6 +60,7 @@ export default function HeroBanner() {
             className="w-44 h-24 sm:w-56 sm:h-36 mb-2 mt-6 md:mt-4"
             priority
           />
+          </a>
           <Heading>
             <TextRise
               text="Welcome to IEEE NSUT"
