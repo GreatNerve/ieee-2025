@@ -71,7 +71,7 @@ export default function PastEvents() {
   const stackOrder = getStackCards(active);
 
   return (
-    <section className="flex flex-col lg:flex-row w-full min-h-[90vh] text-white bg-black relative overflow-hidden px-4 lg:px-0 pt-12 md:pt-20 pb-4">
+    <section className="flex flex-col lg:flex-row w-full min-h-[90vh] text-white bg-black relative overflow-hidden px-4 lg:px-0 pt-12 md:pt-20 pb-4" id="events">
       <div className="w-full lg:w-2/5 flex flex-col justify-center items-start text-center lg:text-left px-2 py-6 lg:pl-12 lg:pr-8 z-10">
         <Heading className="text-3xl md:text-4xl lg:text-5xl mb-4">
           <TextRise
@@ -176,7 +176,7 @@ export default function PastEvents() {
           </div>
 
           {/* Dots navigation */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-50 pointer-events-auto">
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-50 pointer-events-auto max-md:hidden">
             {events.map((_, idx) => (
               <button
                 key={idx}

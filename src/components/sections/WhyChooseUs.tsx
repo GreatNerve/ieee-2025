@@ -3,14 +3,10 @@
 import { cn } from "@/lib/utils";
 import { motion, useInView, Variants } from "framer-motion";
 import {
-  Computer,
   Globe,
   Heart,
   Lightbulb,
-  Network,
-  Rocket,
-  Star,
-  Trophy,
+  Rocket
 } from "lucide-react";
 import { useRef, useState } from "react";
 import { TextRise } from "../custom/TextRise";
@@ -144,6 +140,7 @@ const FeatureCard = ({
 
   return (
     <motion.div
+      id="about"
       custom={index}
       initial="hidden"
       animate={parentInView ? "visible" : "hidden"}

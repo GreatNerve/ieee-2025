@@ -111,7 +111,7 @@ export default function ChaptersSection() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen w-full bg-black py-16 px-2">
+    <section className="flex flex-col items-center justify-center min-h-screen w-full bg-black py-16 px-2" id="chapters">
       <div className="max-w-4xl mx-auto text-center mb-10">
         <Heading>
           <TextRise text="Chapters and Affinity Groups" perWord delay={0.2} />

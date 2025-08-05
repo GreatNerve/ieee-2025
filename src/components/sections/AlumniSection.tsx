@@ -1,27 +1,27 @@
 "use client";
 
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+    type CarouselApi,
 } from "@/components/ui/carousel";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
+import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 import * as React from "react";
-import Autoplay from "embla-carousel-autoplay";
 
+import { TextRise } from "../custom/TextRise";
+import { Heading, Paragraph } from "../includes/TypoGraphy";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { ScrollArea } from "../ui/scroll-area";
-import { Heading, Paragraph } from "../includes/TypoGraphy";
-import { TextRise } from "../custom/TextRise";
 
 const alumniTestimonials = [
   {

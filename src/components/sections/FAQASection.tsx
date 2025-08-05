@@ -65,7 +65,7 @@ export default function FAQASection() {
   const [hoverIdx, setHoverIdx] = React.useState<number | null>(null);
 
   return (
-    <section className="py-16 px-6 max-w-4xl mx-auto flex flex-col items-center justify-center w-full">
+    <section className="py-16 px-6 max-w-4xl mx-auto flex flex-col items-center justify-center w-full" id="faq">
       <Heading>
         <TextRise text="Frequently Asked Questions" perWord delay={0.3} />
       </Heading>
