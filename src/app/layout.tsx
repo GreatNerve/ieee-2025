@@ -5,7 +5,6 @@ import Header from "@/components/includes/Header";
 import { Providers } from "@/provider";
 import Footer from "@/components/includes/Footer";
 import { BlueBgWrapper } from "@/components/includes/BlueBgWraper";
-import { LayoutGroup } from "framer-motion";
 
 
 const geistSans = Geist({
@@ -35,7 +34,7 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
-          <LayoutGroup>{children}</LayoutGroup>
+          {children}
           <BlueBgWrapper className="p-0 sm:p-0 md:p-0 lg:p-0 xl:p-0">
             <Footer />
           </BlueBgWrapper>
