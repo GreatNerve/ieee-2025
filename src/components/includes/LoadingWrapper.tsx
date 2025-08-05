@@ -79,14 +79,7 @@ export default function LoadingWrapper({
           </motion.div>
         )}
       </AnimatePresence>
-
-      <div
-        className={`transition-opacity duration-700 ${
-          isLoading ? "pointer-events-none opacity-0" : "opacity-100"
-        }`}
-      >
-        {children}
-      </div>
+      {!isLoading ? children : null}
     </>
   );
 }
