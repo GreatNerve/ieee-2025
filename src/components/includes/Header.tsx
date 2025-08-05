@@ -45,9 +45,7 @@ export default function Header() {
 
   const sectionIds = tabs.map((tab) => tab.target);
   const activeSection = useActiveSection(sectionIds, 85);
-  console.log("Active Section:", activeSection);
   const pathname = usePathname();
-  console.log("Current Pathname:", pathname);
   const isHomePage = pathname === "/";
   return (
     <>
