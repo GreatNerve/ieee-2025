@@ -199,7 +199,7 @@ const WhyChooseUs = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-black text-blue w-full min-h-screen flex items-center py-14 sm:py-24 px-2 sm:px-8 relative overflow-hidden"
+      className="bg-black text-blue px-4 w-full min-h-screen flex items-center py-14 sm:py-24 sm:px-8 relative overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden">
         <motion.div

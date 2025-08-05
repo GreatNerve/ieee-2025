@@ -111,7 +111,10 @@ export default function ChaptersSection() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen w-full bg-black py-16 px-2" id="chapters">
+    <section
+      className="flex flex-col px-4 items-center justify-center min-h-screen w-full bg-black py-16"
+      id="chapters"
+    >
       <div className="max-w-4xl mx-auto text-center mb-10">
         <Heading>
           <TextRise text="Chapters and Affinity Groups" perWord delay={0.2} />
@@ -223,7 +226,7 @@ export default function ChaptersSection() {
         </Carousel>
       </div>
       <section className="w-full bg-black py-12 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-y-10 sm:gap-y-0">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat) => (
             <div
               key={stat.label}
