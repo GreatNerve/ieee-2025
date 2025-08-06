@@ -145,6 +145,16 @@ const execommsMembers = [
     role: "Execomm",
     img: "/team/Jayant_Garg.jpg",
   },
+  {
+    name: "Gunika Anand",
+    role: "Execomm",
+    img: "/team/gunika_anand.jpg",
+  },
+  {
+    name: "Tanmay Agarwal",
+    role: "Execomm",
+    img: "/team/tanmay_agarwal.jpg",
+  },
 ];
 
 const TechHeadCard = ({
