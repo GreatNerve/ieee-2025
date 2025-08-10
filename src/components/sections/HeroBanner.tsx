@@ -6,6 +6,10 @@ import { useRef } from "react";
 import { TextRise } from "../custom/TextRise";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { Heading, Paragraph } from "../includes/TypoGraphy";
+import { joinNowLink } from "../includes/Header";
+import { Button } from "../ui/button";
+
+const MotionButton = motion(Button);
 
 export default function HeroBanner() {
   const imageContainerRef = useRef<HTMLDivElement>(null);
@@ -51,15 +55,19 @@ export default function HeroBanner() {
       </div>
       <div className="w-full max-w-[900px] mx-auto px-2 sm:px-4 md:px-8 lg:px-10 text-center">
         <div className="bg-black/75 rounded-xl shadow-xl py-4 px-2 sm:px-5 md:px-10 flex flex-col items-center gap-2">
-        <a href="https://www.ieee.org" target="_blank" rel="noopener noreferrer">
-          <Image
-            src="/IEEE_logo.svg"
-            alt="IEEE Logo"
-            width={100}
-            height={100}
-            className="w-44 h-24 sm:w-56 sm:h-36 mb-2 mt-6 md:mt-4"
-            priority
-          />
+          <a
+            href="https://www.ieee.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/IEEE_logo.svg"
+              alt="IEEE Logo"
+              width={100}
+              height={100}
+              className="w-44 h-24 sm:w-56 sm:h-36 mb-2 mt-6 md:mt-4"
+              priority
+            />
           </a>
           <Heading>
             <TextRise
@@ -74,9 +82,41 @@ export default function HeroBanner() {
             collaboration, innovation, and continuous learning, inspiring
             students to grow, lead, and make meaningful impact.
           </Paragraph>
+          <MotionButton
+            asChild
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            className="relative inline-block 
+              bg-[#23a4fb] text-white 
+              px-5 md:px-6 
+              py-2 md:py-2.5 
+              text-sm md:text-base 
+              font-semibold 
+              rounded-full 
+              border-2 border-transparent 
+              shadow-md 
+              transition-transform duration-300 ease-in-out 
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00bfff] focus-visible:ring-offset-2 
+              max-w-[180px] md:max-w-[200px] 
+              overflow-hidden
+              before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-[conic-gradient(from_0deg,_#00bfff,_#23a4fb,_#00bfff)] before:animate-spin-slow before:z-[-1]"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            <a
+              href={joinNowLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full rounded-full bg-[#23a4fb] text-center"
+            >
+              Join Now
+            </a>
+          </MotionButton>
         </div>
       </div>
-      <div className="mt-6 sm:mt-7 md:mt-8 flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto px-1 sm:px-2 md:px-4 lg:px-8">
+      <div className="mt-3 sm:mt-4 md:mt-6 flex flex-col items-center justify-center w-full max-w-[1200px] mx-auto px-1 sm:px-2 md:px-4 lg:px-8">
         <motion.div
           ref={imageContainerRef}
           initial="hidden"
