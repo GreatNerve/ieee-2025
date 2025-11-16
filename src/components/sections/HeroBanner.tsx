@@ -89,38 +89,31 @@ export default function HeroBanner() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="relative inline-block 
-              bg-[#23a4fb] text-white 
-              px-5 md:px-6 
-              py-2 md:py-2.5 
-              text-sm md:text-base 
-              font-semibold 
-              rounded-full 
-              border-2 border-transparent 
-              shadow-md 
-              transition-transform duration-300 ease-in-out 
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00bfff] focus-visible:ring-offset-2 
-              max-w-[180px] md:max-w-[200px] 
-              overflow-hidden
-              before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-[conic-gradient(from_0deg,_#00bfff,_#23a4fb,_#00bfff)] before:animate-spin-slow before:z-[-1]"
+            className="relative inline-flex items-center justify-center
+    bg-[#23a4fb] text-white 
+    px-6 md:px-8
+    py-3 md:py-3.5
+    text-sm md:text-base 
+    font-semibold 
+    rounded-full 
+    border-2 border-transparent 
+    shadow-md 
+    transition-transform duration-300 ease-in-out 
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00bfff] focus-visible:ring-offset-2 
+    max-w-[220px] md:max-w-[260px]
+    overflow-hidden
+    before:absolute before:inset-0 before:rounded-full before:p-[2px] 
+    before:bg-[conic-gradient(from_0deg,_#00bfff,_#23a4fb,_#00bfff)] 
+    before:animate-spin-slow before:z-[-1]"
             style={{ fontFamily: "Roboto, sans-serif" }}
           >
             <a
               href="https://industrial-ideathon-vjo4um39jvw5x7x.s3.us-east-1.amazonaws.com/statics/IEEE+NSUT+(beta).apk"
               download="IEEE-NSUT-App.apk"
-              className="
-                block w-full max-w-sm mx-auto 
-                rounded-full bg-[#23a4fb] 
-                text-center text-white font-semibold 
-                py-3 px-6 
-                text-sm sm:text-base md:text-lg 
-                hover:bg-[#1b8cd6] transition-all
-              "
+              className="w-full text-center whitespace-nowrap"
             >
               Download the IEEE NSUT App
             </a>
-
-
           </MotionButton>
         </div>
       </div>
