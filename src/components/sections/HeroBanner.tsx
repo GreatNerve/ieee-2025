@@ -107,8 +107,7 @@ export default function HeroBanner() {
           >
             <a
               href="https://industrial-ideathon-vjo4um39jvw5x7x.s3.us-east-1.amazonaws.com/statics/IEEE+NSUT+(beta).apk"
-              target="_blank"
-              rel="noopener noreferrer"
+              download="IEEE-NSUT-App.apk"
               className="
                 block w-full max-w-sm mx-auto 
                 rounded-full bg-[#23a4fb] 
@@ -120,6 +119,7 @@ export default function HeroBanner() {
             >
               Download the IEEE NSUT App
             </a>
+
 
           </MotionButton>
         </div>
