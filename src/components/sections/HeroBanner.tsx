@@ -106,13 +106,21 @@ export default function HeroBanner() {
             style={{ fontFamily: "Roboto, sans-serif" }}
           >
             <a
-              href={joinNowLink}
+              href="https://industrial-ideathon-vjo4um39jvw5x7x.s3.us-east-1.amazonaws.com/statics/IEEE+NSUT+(beta).apk"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full h-full rounded-full bg-[#23a4fb] text-center"
+              className="
+                block w-full max-w-sm mx-auto 
+                rounded-full bg-[#23a4fb] 
+                text-center text-white font-semibold 
+                py-3 px-6 
+                text-sm sm:text-base md:text-lg 
+                hover:bg-[#1b8cd6] transition-all
+              "
             >
-              Join Now
+              Download the IEEE NSUT App
             </a>
+
           </MotionButton>
         </div>
       </div>
