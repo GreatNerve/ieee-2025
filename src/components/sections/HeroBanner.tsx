@@ -108,7 +108,7 @@ export default function HeroBanner() {
             style={{ fontFamily: "Roboto, sans-serif" }}
           >
             <a
-              href="https://industrial-ideathon-vjo4um39jvw5x7x.s3.us-east-1.amazonaws.com/statics/IEEE+NSUT+(beta).apk"
+              href="https://industrial-ideathon-vjo4um39jvw5x7x.s3.us-east-1.amazonaws.com/statics/IEEE-NSUT-App-beta.apk"
               download="IEEE-NSUT-App.apk"
               className="w-full text-center whitespace-nowrap"
             >
